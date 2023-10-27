@@ -181,12 +181,11 @@ func main() {
 				err := db.Process(cmd)
 				return err
 			})
-			//db.Options().ReadTimeout = 10 * time.Hour
-			// err = db.Process(cmd)
-			// if err != nil {
-			// 	fmt.Printf("db.Process Err: %v\n", err.Error())
-			// 	return
-			// }
+			err = db.Process(cmd)
+			if err != nil {
+				fmt.Printf("db.Process Err: %v\n", err.Error())
+				return
+			}
 			printCmd(cmd.String(), err)
 		case "cmd":
 			err = errors.Errorf("not sport%s", cmd)
